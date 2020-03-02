@@ -88,9 +88,9 @@ function render() {
     console.log(y);
     console.log(z);
 
-    if (x !== y && z) {
-        if (y !== z && x) {
-            if (z !== y && x) {
+    if (x !== y && x !== z) {
+        if (y !== z && y !== x) {
+            if (z !== y &&  z !== x) {
 
                 firstImages = Select.all[x];
                 console.log(firstImages);

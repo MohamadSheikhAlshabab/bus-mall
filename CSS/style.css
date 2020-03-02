@@ -54,3 +54,25 @@ li {
     color: rgba(0, 12, 22, 0.603);
     background-color: antiquewhite;
 }
+
+#firstImage:active{
+	height: 300px;
+    width: 300px;
+    margin: 30px;
+
+}
+#secondImage:active{
+	height: 300px;
+    width: 300px;
+    margin: 30px;
+
+}
+
+
+#thirdImage:active{
+	height: 300px;
+    width: 300px;
+    margin: 30px;
+
+}
+
