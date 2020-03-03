@@ -1,5 +1,5 @@
 body {
-	display: inline-block;
+	
 	justify-content: space-around;
 	align-content: center;
 	align-items: center;
@@ -10,21 +10,24 @@ body {
 }
 
  #click{
-    display: inline-block;  
+	display: inline-block;
 	flex-shrink: 0;
-	margin: 20px;
-	height: calc(150px + 6vw);
-	width: calc(150px + 6vw);
-	border: calc(8px + 0.2vw) solid transparent;
-	background-origin: border-box;
-	background-clip: content-box, border-box;
-	background-size: cover;.
-	box-sizing: border-box;
-	box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    margin: 20px;
+    height: calc(500px + 22vw);
+    width: calc(500px + 12vw);
+    border: calc(8px + 0.2vw) solid transparent;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-size: cover;
+    box-sizing: border-box;
+    box-shadow: 0 0 58px 46px rgba(0, 0, 0, 0.5);
 }
 
+#click{
+	display: block;
+}
 #firstImage {
-    display: inline-block;
+    
     height: 200px;
     width: 200px;
     margin: 20px;
@@ -33,7 +36,7 @@ body {
 }
 
 #secondImage {
-    display: inline-block;
+   
     height: 200px;
     width: 200px;
     margin: 20px;
@@ -42,15 +45,41 @@ body {
 }
 
 #thirdImage {
-    display: inline-block;
+    
     height: 200px;
     width: 200px;
     margin: 20px;
 	border-radius: 50% 10%;
 	background-image:  linear-gradient(to bottom left, #f83600, #f9d423);
 }
+#click{
+	height: 800px;
+    width: 800px;
+}
 
 li {
     color: rgba(0, 12, 22, 0.603);
     background-color: antiquewhite;
 }
+
+#firstImage:active{
+	height: 300px;
+    width: 300px;
+    margin: 30px;
+
+}
+#secondImage:active{
+	height: 300px;
+    width: 300px;
+    margin: 30px;
+
+}
+
+
+#thirdImage:active{
+	height: 300px;
+    width: 300px;
+    margin: 30px;
+
+}
+
