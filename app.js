@@ -1,3 +1,5 @@
+'use strict';
+
 // var click = document.getElementById('click');
 // click.addEventListener('click', makeChange);
 // var counter = 0;
@@ -84,22 +86,25 @@ function render() {
     var x = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
     var y = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
     var z = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
-    console.log(x);
-    console.log(y);
-    console.log(z);
+    // console.log(x);
+    // console.log(y);
+    // console.log(z);
 
-    
+    // firstImages.veiws++;
+    // secondImages.veiws++;
+    // thirdImages.veiws++;
 
-    if (x === y &&  z) {
-        if (y === z &&  x) {
-            if (z == y && x) {
-                console.log("here will be same images");
+    if (x === y && y === z && x === z || x === y && y === z || x === y || x === z
+        || y === z) {
+        console.log("x =" + x);
+        console.log("y =" + y);
+        console.log("z =" + z);
 
-            }
-        }
-    }
-    else{
-        
+
+
+
+    } else {
+
         firstImages = Select.all[x];
         // console.log(firstImages);
         secondImages = Select.all[y];
@@ -131,36 +136,93 @@ click.addEventListener('click', makeChange);
 var totals = 0;
 
 function makeChange(event) {
-    // render();
-    if (totals < 25) {
+    if (totals < 5) {
+        // render();
+        // firstImages.veiws++;
+        // console.log("firstImages.veiws" +firstImages.veiws);
 
-        if (event.target.id === 'click') {
+        // secondImages.veiws++;
+        // console.log("secondImages.veiws" +secondImages.veiws);
+
+        // thirdImages.veiws++;
+        // console.log("thirdImages.veiws" +thirdImages.veiws);
+
+        console.log(firstImage);
+        // firstImages.veiws++;
+        console.log(firstImages);
+        // console.log("firstImages.veiws" +firstImages.veiws);
+        // console.log("firstImages.clicks" +firstImages.clicks);
+        // console.log(firstImages.clicks);
+
+        console.log(secondImage);
+        // secondImages.veiws++;
+        console.log(secondImages);
+        // console.log("secondImages.veiws" +secondImages.veiws);
+        // console.log("secondImages.clicks" +secondImages.clicks);
+        // console.log(secondImages.clicks);
+
+        console.log(thirdImage);
+        // thirdImages.veiws++;
+        console.log(thirdImages);
+        // console.log("thirdImages.veiws" +thirdImages.veiws);
+        // console.log("thirdImages.clicks" +thirdImages.clicks);
+        // console.log(thirdImages.clicks);
+
+        if (event.target.id !== 'click') {
+            console.log("hellllo");
             if (event.target.id === 'firstImage') {
-                firstImages.click++;
-                firstImages.veiws++;
-                // console.log(firstImage);
-                // console.log(firstImages);
 
-            } else if (event.target.id === 'secondImage') {
+                firstImages.click++;
+                // firstImages.veiws++;
+                // secondImages.veiws++;
+                // thirdImages.veiws++;
+                // firstImages.veiws++;
+                console.log(firstImage);
+                // firstImages.veiws++;
+                console.log(firstImages);
+                console.log("firstImages.veiws" + firstImages.veiws);
+                console.log("firstImages.clicks" + firstImages.clicks);
+                // console.log(firstImages.clicks);
+
+            } if (event.target.id !== 'secondImage') {
                 secondImages.clicks++;
-                secondImages.veiws++;
+                // firstImages.veiws++;
+                // secondImages.veiws++;
+                // thirdImages.veiws++;
+                // secondImages.veiws++;
                 // console.log(secondImage);
-                // console.log(secondImage);
-            } else if (event.target.id === 'thirdImage') {
+                // // secondImages.veiws++;
+                // console.log(secondImages);
+                // console.log("secondImages.veiws" +secondImages.veiws);
+                // console.log("secondImages.clicks" +secondImages.clicks);
+                // console.log(secondImages.clicks);
+            } if (event.target.id !== 'thirdImage') {
                 thirdImages.clicks++;
-                thirdImages.veiws++;
+                // firstImages.veiws++;
+                // secondImages.veiws++;
+                // thirdImages.veiws++;
+                // thirdImages.veiws++;
                 // console.log(thirdImage);
+                // // thirdImages.veiws++;
                 // console.log(thirdImages);
-                // console.log(thirdImages.veiws);
+                // console.log("thirdImages.veiws" +thirdImages.veiws);
+                // console.log("thirdImages.clicks" +thirdImages.clicks);
                 // console.log(thirdImages.clicks);
             }
         }
-
-        // firstImages.veiws++;
-        // secondImages.veiws++;
-        // thirdImages.veiws++;
+        if (firstImages.click || secondImages.clicks || thirdImages.clicks) {
+            
+            // firstImages.veiws++;
+            // secondImages.veiws++;
+            // thirdImages.veiws++;
+            render(); 
+        }
+        
+                firstImages.veiws++;
+                secondImages.veiws++;
+                thirdImages.veiws++;
         totals++;
-        render();
+
 
     } else {
 
@@ -177,7 +239,7 @@ function makeChange(event) {
 function render2() {
     var ul1 = document.getElementById('sumrize');
 
-    for (var j = 0; j < Select.all.length; j++) {
+    for (var j = 0; j <Select.all.length; j++) {
         var li1 = document.createElement('li');
         li1.textContent = `${Select.all[j].name} had ${Select.all[j].clicks} votes and was shown ${Select.all[j].veiws} times`;
         ul1.appendChild(li1);
@@ -222,7 +284,7 @@ function myChart() {
             ],
             datasets: [{
                 label: '# of Votes',
-                data: ["1" ,"2","3"],
+                data: ["1", "2", "3"],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
