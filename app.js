@@ -272,6 +272,7 @@ function makeChange(event) {
         secondImages.veiws++;
         thirdImages.veiws++;
         totals++;
+        setLi();
         render();
 
 
@@ -300,6 +301,25 @@ function render2() {
 
 
 }
+
+function setLi(){
+    var stringLi =JSON.stringify(Select.all);
+    localStorage.setItem("setArray",stringLi);
+        
+    }
+    function getLi(){
+
+       var parseLi = localStorage.getItem("setArray");
+        if (parseLi){
+
+            Select.all =JSON.parse(parseLi);
+render2();
+myChart();
+        }
+    }
+    getLi();
+
+
 
 
 function myChart() {
