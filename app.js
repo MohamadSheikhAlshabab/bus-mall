@@ -1,8 +1,5 @@
 'use strict';
 
-// var click = document.getElementById('click');
-// click.addEventListener('click', makeChange);
-// var counter = 0;
 
 var images = [
 
@@ -62,14 +59,23 @@ function Select(name) {
     this.clicks = 0;
     this.veiws = 0;
     Select.all.push(this);
+    // clicks.all.push(this)
 
 }
-
-
-
-
-
 Select.all = [];
+// var sumClicks=[];
+
+// for (var t = 0; t < images.length; t++) {
+//     var numClicks = Select.all[t].clicks;
+//     // console.log(Select.all[t].clicks);
+//     sumClicks.push(numClicks);
+// }
+
+
+// function afterClicks(event){
+//     event.preventDefault();
+//     var t =document.getElementById('');
+// }
 
 
 
@@ -78,38 +84,65 @@ for (var i = 0; i < images.length; i++) {
     new Select(images[i]);
 
 }
-
+var exist = [];
 var firstImages, secondImages, thirdImages;
 
 function render() {
+firstImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
+secondImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
+thirdImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
 
-    var x = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
-    var y = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
-    var z = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
+
+    if (firstImages === secondImages && secondImages === thirdImages && firstImages === thirdImages || firstImages === secondImages && secondImages === thirdImages || firstImages === secondImages || firstImages === thirdImages
+        || secondImages === thirdImages) {
+        render();
+    }
     // console.log(x);
     // console.log(y);
     // console.log(z);
 
     // firstImages.veiws++;
     // secondImages.veiws++;
+
     // thirdImages.veiws++;
-
-    if (x === y && y === z && x === z || x === y && y === z || x === y || x === z
-        || y === z) {
-        console.log("x =" + x);
-        console.log("y =" + y);
-        console.log("z =" + z);
-
-
+    while (exist.includes(firstImages)) {
+        firstImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
+        
+    }
+    while (exist.includes(secondImages)) {  
+        
+        secondImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
+        
+    }
+    while (exist.includes(thirdImages)) {
+        
+        thirdImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
+        
+        
+    }
+    exist.push(firstImages);
+    exist.push(secondImages);
+    exist.push(thirdImages);
+    while (exist.length > 2) {
+        exist.shift();
+    }
+    
+    
+  
+    if (firstImages === secondImages && secondImages === thirdImages && firstImages === thirdImages || firstImages === secondImages && secondImages === thirdImages || firstImages === secondImages || firstImages === thirdImages
+        || secondImages === thirdImages) {
+        // console.log("x =" + x);
+        // console.log("y =" + y);
+        // console.log("z =" + z);
 
 
     } else {
-
-        firstImages = Select.all[x];
+        // while (){
+        firstImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
         // console.log(firstImages);
-        secondImages = Select.all[y];
+        secondImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
         // console.log(secondImages);
-        thirdImages = Select.all[z];
+        thirdImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
         // console.log(thirdImages);
 
         firstImage.setAttribute('src', firstImages.imagePath);
@@ -123,11 +156,18 @@ function render() {
         firstImage.setAttribute('title', firstImages.name);
         secondImage.setAttribute('title', secondImages.name);
         thirdImage.setAttribute('title', thirdImages.name);
+        // ]
     }
 
 
 }
-render();
+
+
+// if (firstImages !== secondImages && secondImages !== thirdImages && firstImages !== thirdImages || firstImages !== secondImages && secondImages !== thirdImages || firstImages !== secondImages || firstImages !== thirdImages
+//     || secondImages !== thirdImages) {
+    render();
+// }
+
 
 
 
@@ -136,7 +176,9 @@ click.addEventListener('click', makeChange);
 var totals = 0;
 
 function makeChange(event) {
-    if (totals < 5) {
+    event.preventDefault();
+
+    if (totals < 25) {
         // render();
         // firstImages.veiws++;
         // console.log("firstImages.veiws" +firstImages.veiws);
@@ -147,44 +189,44 @@ function makeChange(event) {
         // thirdImages.veiws++;
         // console.log("thirdImages.veiws" +thirdImages.veiws);
 
-        console.log(firstImage);
+        // console.log(firstImage);
         // firstImages.veiws++;
-        console.log(firstImages);
+        // console.log(firstImages);
         // console.log("firstImages.veiws" +firstImages.veiws);
         // console.log("firstImages.clicks" +firstImages.clicks);
         // console.log(firstImages.clicks);
 
-        console.log(secondImage);
+        // console.log(secondImage);
         // secondImages.veiws++;
-        console.log(secondImages);
+        // console.log(secondImages);
         // console.log("secondImages.veiws" +secondImages.veiws);
         // console.log("secondImages.clicks" +secondImages.clicks);
         // console.log(secondImages.clicks);
 
-        console.log(thirdImage);
+        // console.log(thirdImage);
         // thirdImages.veiws++;
-        console.log(thirdImages);
+        // console.log(thirdImages);
         // console.log("thirdImages.veiws" +thirdImages.veiws);
         // console.log("thirdImages.clicks" +thirdImages.clicks);
         // console.log(thirdImages.clicks);
 
         if (event.target.id !== 'click') {
-            console.log("hellllo");
+            // console.log("hellllo");
             if (event.target.id === 'firstImage') {
 
-                firstImages.click++;
+                firstImages.clicks++;
                 // firstImages.veiws++;
                 // secondImages.veiws++;
                 // thirdImages.veiws++;
                 // firstImages.veiws++;
-                console.log(firstImage);
+                // console.log(firstImage);
                 // firstImages.veiws++;
-                console.log(firstImages);
-                console.log("firstImages.veiws" + firstImages.veiws);
-                console.log("firstImages.clicks" + firstImages.clicks);
+                // console.log(firstImages);
+                // console.log("firstImages.veiws" + firstImages.veiws);
+                // console.log("firstImages.clicks" + firstImages.clicks);
                 // console.log(firstImages.clicks);
 
-            } if (event.target.id !== 'secondImage') {
+            } if (event.target.id === 'secondImage') {
                 secondImages.clicks++;
                 // firstImages.veiws++;
                 // secondImages.veiws++;
@@ -196,7 +238,7 @@ function makeChange(event) {
                 // console.log("secondImages.veiws" +secondImages.veiws);
                 // console.log("secondImages.clicks" +secondImages.clicks);
                 // console.log(secondImages.clicks);
-            } if (event.target.id !== 'thirdImage') {
+            } if (event.target.id === 'thirdImage') {
                 thirdImages.clicks++;
                 // firstImages.veiws++;
                 // secondImages.veiws++;
@@ -210,18 +252,28 @@ function makeChange(event) {
                 // console.log(thirdImages.clicks);
             }
         }
-        if (firstImages.click || secondImages.clicks || thirdImages.clicks) {
-            
+        if (firstImages === secondImages || firstImages === thirdImages || secondImages === thirdImages) {
+            // firstImages.clicks++;
+            // secondImages.clicks++;
+            // thirdImages.clicks++;
+
             // firstImages.veiws++;
             // secondImages.veiws++;
             // thirdImages.veiws++;
-            render(); 
+            // console.log("firstImages.veiws" + firstImages.veiws);
+            // console.log("firstImages.clicks" + firstImages.clicks);
+            // console.log("secondImages.veiws" + secondImages.veiws);
+            // console.log("secondImages.clicks" + secondImages.clicks);
+            // console.log("thirdImages.veiws" + thirdImages.veiws);
+            // console.log("thirdImages.clicks" + thirdImages.clicks);
         }
-        
-                firstImages.veiws++;
-                secondImages.veiws++;
-                thirdImages.veiws++;
+
+        firstImages.veiws++;
+        secondImages.veiws++;
+        thirdImages.veiws++;
         totals++;
+        render();
+
 
 
     } else {
@@ -236,27 +288,42 @@ function makeChange(event) {
 }
 
 
+
 function render2() {
     var ul1 = document.getElementById('sumrize');
 
-    for (var j = 0; j <Select.all.length; j++) {
+    for (var j = 0; j < Select.all.length; j++) {
         var li1 = document.createElement('li');
-        li1.textContent = `${Select.all[j].name} had ${Select.all[j].clicks} votes and was shown ${Select.all[j].veiws} times`;
+        li1.textContent = `${Select.all[j].name.split(".")[0]} had ${Select.all[j].clicks} votes and was shown ${Select.all[j].veiws} times`;
         ul1.appendChild(li1);
     }
 
 
 }
 
+
 function myChart() {
     var ctx = document.getElementById('myChart');
-    // var t =0;
-    // for (var o=0 ; o <images.all.length;o++){
-    //     t =
+    var arrayName = [];
+    var arrayClicks = [];
+    var arrayViews = [];
+    for (var t = 0; t < Select.all.length; t++) {
+        var arrayNameImg = Select.all[t].name;
+        arrayName.push(arrayNameImg);
+    }
 
-    // }
+    for (var p = 0; p < Select.all.length; p++) {
+        var arrayClicksImg = Select.all[p].clicks;
+        arrayClicks.push(arrayClicksImg);
+    }
+
+    for (var z = 0; z < Select.all.length; z++) {
+        var arrayViewsImg = Select.all[z].veiws;
+        arrayViews.push(arrayViewsImg);
+    }
+
     var myChart = new Chart(ctx, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: [
                 "bag",
@@ -283,8 +350,8 @@ function myChart() {
 
             ],
             datasets: [{
-                label: '# of Votes',
-                data: ["1", "2", "3"],
+                label: '# of clicks',
+                data: arrayClicks,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -334,7 +401,63 @@ function myChart() {
 
                 ],
                 borderWidth: 1
+            }
+                ,
+            {
+                label: '# of views',
+                data: arrayViews,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.1)',
+                    'rgba(54, 162, 235, 0.1)',
+                    'rgba(255, 206, 86, 0.1)',
+                    'rgba(100, 99, 132, 0.1)',
+                    'rgba(100, 162, 235, 0.1)',
+                    'rgba(100, 206, 86, 0.1)',
+                    'rgba(255, 200, 132, 0.1)',
+                    'rgba(54, 200, 235, 0.1)',
+                    'rgba(255, 200, 86, 0.1)',
+                    'rgba(255, 99, 25, 0.1)',
+                    'rgba(54, 162, 25, 0.1)',
+                    'rgba(255, 206, 25, 0.1)',
+                    'rgba(100, 99, 132, 0.1)',
+                    'rgba(100, 162, 235, 0.1)',
+                    'rgba(100, 206, 86, 0.1)',
+                    'rgba(255, 50, 132, 0.1)',
+                    'rgba(54, 50, 235, 0.1)',
+                    'rgba(255, 50, 86, 0.1)',
+                    'rgba(255, 99, 25, 0.1)',
+                    'rgba(54, 162, 25, 0.1)'
+
+
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 0.75)',
+                    'rgba(54, 162, 235, 0.75)',
+                    'rgba(255, 206, 86, 0.75)',
+                    'rgba(100, 99, 132, 0.75)',
+                    'rgba(100, 162, 235, 0.75)',
+                    'rgba(100, 206, 86, 0.75)',
+                    'rgba(255, 200, 132, 0.75)',
+                    'rgba(54, 200, 235, 0.75)',
+                    'rgba(255, 200, 86, 0.75)',
+                    'rgba(255, 99, 25, 0.75)',
+                    'rgba(54, 162, 25, 0.75)',
+                    'rgba(255, 206, 25, 0.75)',
+                    'rgba(100, 99, 132, 0.75)',
+                    'rgba(100, 162, 235,0.75)',
+                    'rgba(100, 206, 86, 0.75)',
+                    'rgba(255, 50, 132, 0.75)',
+                    'rgba(54, 50, 235, 0.75)',
+                    'rgba(255, 50, 86, 0.75)',
+                    'rgba(255, 99, 25, 0.75)',
+                    'rgba(54, 162, 25, 0.75)'
+
+
+                ],
+                borderWidth: 1
             }]
+
+
         },
         options: {
             scales: {
