@@ -88,15 +88,12 @@ var exist = [];
 var firstImages, secondImages, thirdImages;
 
 function render() {
-firstImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
-secondImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
-thirdImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
+
+    firstImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
+    secondImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
+    thirdImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1);
 
 
-    if (firstImages === secondImages && secondImages === thirdImages && firstImages === thirdImages || firstImages === secondImages && secondImages === thirdImages || firstImages === secondImages || firstImages === thirdImages
-        || secondImages === thirdImages) {
-        render();
-    }
     // console.log(x);
     // console.log(y);
     // console.log(z);
@@ -104,39 +101,60 @@ thirdImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.len
     // firstImages.veiws++;
     // secondImages.veiws++;
 
+
     // thirdImages.veiws++;
+
     while (exist.includes(firstImages)) {
         firstImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
-        
+       
+    if (firstImages === secondImages || secondImages === thirdImages || firstImages === thirdImages ) {
+        render();
     }
-    while (exist.includes(secondImages)) {  
-        
+
+
+    }
+
+
+    while (exist.includes(secondImages)) {
         secondImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
-        
+       
+    if (firstImages === secondImages || secondImages === thirdImages || firstImages === thirdImages ) {
+        render();
     }
+
+    }
+
     while (exist.includes(thirdImages)) {
-        
         thirdImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
-        
-        
+     
+    if (firstImages === secondImages || secondImages === thirdImages || firstImages === thirdImages ) {
+        render();
     }
+
+    }
+  
+    if (firstImages === secondImages || secondImages === thirdImages || firstImages === thirdImages ) {
+    exist = [];
     exist.push(firstImages);
+    exist =[];
     exist.push(secondImages);
+    exist =[];
     exist.push(thirdImages);
-    while (exist.length > 2) {
+    while (exist.length > 3) {
+        exist = [];
         exist.shift();
     }
-    
-    
-  
-    if (firstImages === secondImages && secondImages === thirdImages && firstImages === thirdImages || firstImages === secondImages && secondImages === thirdImages || firstImages === secondImages || firstImages === thirdImages
-        || secondImages === thirdImages) {
-        // console.log("x =" + x);
-        // console.log("y =" + y);
-        // console.log("z =" + z);
+}
 
 
-    } else {
+    // if (firstImages === secondImages || secondImages === thirdImages || firstImages === thirdImages) {
+    //     // console.log("x =" + x);
+    //     // console.log("y =" + y);
+    //     // console.log("z =");
+
+
+
+    // } else {
         // while (){
         firstImages = Select.all[Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.length - 1) + 1)];
         // console.log(firstImages);
@@ -157,6 +175,12 @@ thirdImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.len
         secondImage.setAttribute('title', secondImages.name);
         thirdImage.setAttribute('title', thirdImages.name);
         // ]
+    // }
+    
+
+
+    if (firstImages === secondImages || secondImages === thirdImages || firstImages === thirdImages ) {
+        render();
     }
 
 
@@ -165,7 +189,7 @@ thirdImages = Math.floor(Math.random(0, Select.all.length - 1) * (Select.all.len
 
 // if (firstImages !== secondImages && secondImages !== thirdImages && firstImages !== thirdImages || firstImages !== secondImages && secondImages !== thirdImages || firstImages !== secondImages || firstImages !== thirdImages
 //     || secondImages !== thirdImages) {
-    render();
+render();
 // }
 
 
@@ -302,22 +326,22 @@ function render2() {
 
 }
 
-function setLi(){
-    var stringLi =JSON.stringify(Select.all);
-    localStorage.setItem("setArray",stringLi);
-        
-    }
-    function getLi(){
+function setLi() {
+    var stringLi = JSON.stringify(Select.all);
+    localStorage.setItem("setArray", stringLi);
 
-       var parseLi = localStorage.getItem("setArray");
-        if (parseLi){
+}
+function getLi() {
 
-            Select.all =JSON.parse(parseLi);
-render2();
-myChart();
-        }
+    var parseLi = localStorage.getItem("setArray");
+    if (parseLi) {
+
+        Select.all = JSON.parse(parseLi);
+        render2();
+        myChart();
     }
-    getLi();
+}
+getLi();
 
 
 
